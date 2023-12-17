@@ -34,6 +34,7 @@ const router = createBrowserRouter([
   }
 ]);
 
+// 스타일 정의
 const GlobalStyles = createGlobalStyle`
 ${reset};
 *{
