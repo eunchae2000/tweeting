@@ -1,0 +1,12 @@
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCceKUGK-Uxqy8-3wrzGVlnAqQ6Rxt7COY",
+  authDomain: "tweeting-a049a.firebaseapp.com",
+  projectId: "tweeting-a049a",
+  storageBucket: "tweeting-a049a.appspot.com",
+  messagingSenderId: "735718141337",
+  appId: "1:735718141337:web:839ff962301007c8843708"
+};
+
+const app = initializeApp(firebaseConfig);
