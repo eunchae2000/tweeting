@@ -1,11 +1,11 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "../node_modules/react-router-dom/dist/index";
 import Layout from "./components/layout";
 import Home from "./routes/home";
 import Login from "./routes/login";
 import Profile from "./routes/profile";
-import CreateAcccount from "./routes/create-account"
-import { createGlobalStyle } from "styled-components";
+import CreateAcccount from "./routes/create-account";
+import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loading-screen";
@@ -13,26 +13,27 @@ import { auth } from "./firebase";
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element: <Layout/>,
+    path: "/",
+    element: <Layout />,
     children: [
       {
-        path:"",
-        element: <Home/>,
+        path: "",
+        element: <Home />,
       },
       {
-        path:"profile",
-        element:<Profile/>,
+        path: "profile",
+        element: <Profile />,
       },
-    ]
+    ],
   },
   {
-    path:"/login",
-    element:<Login/>
+    path: "/login",
+    element: <Login />,
   },
   {
-    path:"/create-account", element:<CreateAcccount/>
-  }
+    path: "/create-account",
+    element: <CreateAcccount />,
+  },
 ]);
 
 // 스타일 정의
@@ -50,21 +51,26 @@ body {
 }
 `;
 
+const Wrapper = styled.div`
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  `;
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const init = async() => {
+  const init = async () => {
     await auth.authStateReady();
     setIsLoading(false);
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     init();
   }, []);
   return (
-    <>
-      <GlobalStyles/>
-      {isLoading ? <LoadingScreen/> :<RouterProvider router={router}/>}
-    </>
+    <Wrapper>
+      <GlobalStyles />
+      {isLoading ? <LoadingScreen /> : <RouterProvider router={router} />}
+    </Wrapper>
   );
 }
 
