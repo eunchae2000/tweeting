@@ -44,7 +44,6 @@ export default function CreateAcccount() {
         email,
         password
       );
-      console.log(credentials.user);
       await updateProfile(credentials.user, {
         displayName: name,
       });
@@ -57,11 +56,10 @@ export default function CreateAcccount() {
       setIsLoading(false);
     }
 
-    console.log(name, email, password);
   };
   return (
     <Wrapper>
-      <Title>Join 𝘟</Title>
+      <Title>Join 𝕏</Title>
       <Form onSubmit={onSubmit}>
         <Input
           onChange={onChange}

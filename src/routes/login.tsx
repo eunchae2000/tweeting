@@ -8,6 +8,8 @@ import { auth } from "../firebase";
 
 
 export default function CreateAcccount() {
+  // useNavigate = 양식이 제출되거나 특정 event가 발생할 때, url을 조작할 수 있는 interface 제공
+  // 첫 번째 인자는 주소, 두 번째 인자는 {replace, state} 사용
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -25,6 +27,7 @@ export default function CreateAcccount() {
   };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // preventDefault를 명시적으로 호출해줘야함
     e.preventDefault();
     setError("");
     if (isLoading || email === "" || password === "") return;
@@ -42,7 +45,7 @@ export default function CreateAcccount() {
   };
   return (
     <Wrapper>
-      <Title>Log into 𝘟</Title>
+      <Title>Log into 𝕏</Title>
       <Form onSubmit={onSubmit}>
         <Input
           onChange={onChange}
