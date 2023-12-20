@@ -17,7 +17,7 @@ export interface ITweet {
   tweet: string;
   userId: string;
   username: string;
-  createdAt: number;
+  createAt: number;
 }
 
 const Wrapper = styled.div`
@@ -34,23 +34,23 @@ export default function Timeline() {
     const fetchTweets = async () => {
       const tweetsQuery = query(
         collection(db, "tweets"),
-        orderBy("createdAt", "desc"),
-        limit(25)
-      );
-      unsubcribe = onSnapshot(tweetsQuery, (snapshot) => {
-        const tweets = snapshot.docs.map((doc) => {
-          const { tweet, createdAt, userId, username, photo } = doc.data();
-          return {
-            tweet,
-            createdAt,
-            userId,
-            username,
-            photo,
-            id: doc.id,
-          };
-        });
-        setTweet(tweets);
-      });
+        orderBy("createAt", "desc"),
+        limit(25));
+
+        unsubcribe = onSnapshot(tweetsQuery, (snapshot) => {
+          const tweets = snapshot.docs.map((doc) => {
+            const {tweet, createAt, userId, username, photo} = doc.data();
+            return {
+              tweet,
+              createAt,
+              userId,
+              username,
+              photo,
+              id:doc.id,
+            };
+          });
+          setTweet(tweets);
+        })
     };
     fetchTweets();
     return () => {
