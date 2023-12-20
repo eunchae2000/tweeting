@@ -19,10 +19,10 @@ const TextArea = styled.textarea`
   background-color: black;
   width: 100%;
   resize: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Robot,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   &::placeholder {
     font-size: 16px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Robot,
-      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
   &:focus {
     outline: none;
@@ -92,8 +92,8 @@ export default function PostTweetForm() {
               const result = await uploadBytes(locationRef, file);
               const url = await getDownloadURL(result.ref);
               await updateDoc(doc, {
-                  photo:url,
-              })
+                  photo: url,
+              });
           }
           setTweet("");
           setFile(null);
@@ -108,6 +108,7 @@ export default function PostTweetForm() {
   return (
     <Form onSubmit={onSubmit}>
       <TextArea
+        required
         rows={5}
         maxLength={180}
         onChange={onChange}
