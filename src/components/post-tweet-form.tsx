@@ -4,6 +4,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { auth, db, storage } from "../firebase";
 
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
